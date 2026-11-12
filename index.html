@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" data-ib-oracle-fonts href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap">
 <style>
-/* The Inter Books paper page around the oracle panel: header and footer echo interbooks.com.au. */
+/* The Inter Books paper page around the oracle panel: the shared Inter Books header and footer sit above and below it. */
 :root {
   --paper: #F7F5F2; --ink: #2B2724; --muted: #6B6560; --rule: #E2DCD3;
   --oxblood: #8E1B22; --brass: #B08D57; --night: #2F2A4A; --night-text: #CFC9D9;
@@ -32,45 +32,79 @@ body { background: var(--paper); color: var(--ink); font-family: var(--sans); fo
 a { color: inherit; }
 .gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .inner { max-width: 1100px; margin: 0 auto; }
-header.site { border-bottom: 1px solid var(--rule); background: var(--paper); }
-header.site .inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; }
-.logo img { height: 46px; width: auto; display: block; }
-nav.main { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-nav.main a { text-decoration: none; font-weight: 700; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; }
-nav.main a:hover { color: var(--oxblood); }
-nav.main a.shop { background: var(--oxblood); color: var(--paper); padding: 9px 18px; border-radius: 2px; letter-spacing: 0.08em; }
-nav.main a.shop:hover { background: #6f151b; color: var(--paper); }
 main { padding-block: clamp(24px, 5vw, 56px) clamp(32px, 6vw, 72px); }
 .under { max-width: 960px; margin: 22px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; color: var(--muted); font-size: 0.95rem; }
 .under a { color: var(--oxblood); text-underline-offset: 3px; }
-footer.site { background: var(--night); color: var(--night-text); }
-footer.site .inner { padding-block: 40px 28px; display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr)); gap: 28px; }
-footer.site .tag { font-family: var(--serif); font-style: italic; font-size: 1.3rem; color: var(--paper); max-width: 18em; margin: 0; }
-footer.site h4 { margin: 0 0 10px; font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass); }
-footer.site ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-footer.site a { text-decoration: none; font-size: 0.95rem; }
-footer.site a:hover { color: var(--paper); text-decoration: underline; }
-footer.site .legal { grid-column: 1 / -1; border-top: 1px solid rgba(207,201,217,.2); padding-top: 16px; font-size: 0.85rem; }
 :focus-visible { outline: 2px solid var(--oxblood); outline-offset: 3px; }
-@media (max-width: 720px) {
-  nav.main a:not(.shop) { display: none; }
-  .logo img { height: 38px; }
-  footer.site .inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  footer.site .tag { grid-column: 1 / -1; }
-}
 @media (max-width: 560px) { main.gutter { padding-left: 0; padding-right: 0; } .under { padding: 0 16px; } }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..500&family=Alegreya+Sans:wght@400;500;700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap">
+<style>
+.ibx-head [hidden],.ibx-foot [hidden]{display:none!important}
+.ibx-head,.ibx-foot{--dusk:#2A2420;--walnut:#3A312A;--cream:#F6F0E3;--taupe:#B8AA94;--gilt:#C39A4E;--gilt-pale:#E0BE7C;--rule:#4A3F36;box-sizing:border-box}
+.ibx-head *,.ibx-foot *{box-sizing:border-box}
+.ibx-head{background:var(--dusk);border-bottom:1px solid var(--rule)}
+.ibx-in{max-width:1136px;margin:0 auto;padding:14px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;gap:12px 32px;flex-wrap:wrap}
+.ibx-logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--cream);font-family:'Fraunces',Georgia,serif;font-size:26px;line-height:1}
+.ibx-logo svg{height:46px;width:auto;display:block}
+.ibx-nav{display:flex;flex-wrap:wrap;gap:0 28px;align-items:center}
+.ibx-nav a,.ibx-menu summary{font-family:'Alegreya Sans',Verdana,sans-serif;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);text-decoration:none;padding:14px 0;display:inline-block}
+.ibx-nav a:hover,.ibx-nav a:focus-visible{color:var(--gilt-pale)}
+.ibx-nav a[aria-current="page"]{color:var(--gilt)}
+.ibx-menu{display:none}
+.ibx-menu summary{cursor:pointer;list-style:none}
+.ibx-menu summary::-webkit-details-marker{display:none}
+.ibx-foot{background:var(--walnut);color:var(--taupe);font-family:'EB Garamond',Georgia,serif;font-size:17px;line-height:1.5}
+.ibx-foot .ibx-in{align-items:flex-start}
+.ibx-foot p{margin:0;max-width:34em}
+.ibx-foot a{color:var(--taupe);text-decoration:none;display:inline-block;padding:6px 0;margin-right:22px}
+.ibx-foot a:hover{color:var(--gilt-pale)}
+.ibx-base{border-top:1px solid var(--rule);font-family:'Alegreya Sans',Verdana,sans-serif;font-size:14px}
+@media (max-width:760px){
+  .ibx-nav{display:none}
+  .ibx-menu{display:block}
+  .ibx-menu[open]{flex-basis:100%}
+  .ibx-menu[open] summary{color:var(--gilt)}
+  .ibx-menu nav{display:flex;flex-direction:column;border-top:1px solid var(--rule);margin-top:6px}
+  .ibx-menu nav a{font-family:'Fraunces',Georgia,serif;font-size:24px;color:var(--cream);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--rule)}
+}
 </style>
 </head>
 <body>
-<header class="site gutter">
-  <div class="inner">
-    <a class="logo" href="https://www.interbooks.com.au/" aria-label="Inter Books home"><img src="https://images.squarespace-cdn.com/content/v1/63fdb6d2c5fd2e7d65f5565a/f02e4394-c0a4-44a3-8d5d-c8d5e9f9e1dd/Artboard+1%403x.png?format=500w" alt="Inter Books" width="190" height="46"></a>
-    <nav class="main" aria-label="Main">
+<header class="ibx-head">
+  <div class="ibx-in">
+    <a class="ibx-logo" href="https://www.interbooks.com.au/">
+      <svg viewBox="0 0 120 128" aria-hidden="true" fill="none" stroke="#F6F0E3">
+        <path d="M22 114 V54 A38 38 0 0 1 98 54 V114 Z" stroke-width="3"/>
+        <line x1="36" y1="98" x2="84" y2="98" stroke-width="3"/>
+        <rect x="41" y="52" width="12" height="46" stroke-width="3"/>
+        <rect x="67" y="44" width="12" height="54" stroke-width="3"/>
+        <path d="M60 58 C66 67 66 74 60 82 C54 74 54 67 60 58 Z" fill="#C39A4E" stroke="none"/>
+      </svg>
+      <span>Inter Books</span>
+    </a>
+    <nav class="ibx-nav" aria-label="Main">
+      <a href="https://www.interbooks.com.au/the-shelves">Shop</a>
       <a href="https://www.interbooks.com.au/journal">Journal</a>
-      <a href="https://www.interbooks.com.au/aboutus">About us</a>
-      <a href="https://www.interbooks.com.au/contact">Contact</a>
-      <a class="shop" href="https://www.interbooks.com.au/store">Shop</a>
+      <!-- On the Oracle site keep aria-current on Oracle; on the Reading List site move it to Reading list. -->
+      <a href="https://oracle.interbooks.com.au/" aria-current="page">Oracle</a>
+      <a href="https://reading-list.interbooks.com.au/">Reading list</a>
+      <a data-ib-biblio hidden href="#">Bibliomancy</a>
+      <a href="https://www.interbooks.com.au/aboutus">About</a>
+      <a href="https://www.interbooks.com.au/cart">Cart</a>
     </nav>
+    <details class="ibx-menu">
+      <summary>Menu</summary>
+      <nav aria-label="Main, mobile">
+        <a href="https://www.interbooks.com.au/the-shelves">Shop</a>
+        <a href="https://www.interbooks.com.au/journal">Journal</a>
+        <a href="https://oracle.interbooks.com.au/">Oracle</a>
+        <a href="https://reading-list.interbooks.com.au/">Reading list</a>
+        <a data-ib-biblio hidden href="#">Bibliomancy</a>
+        <a href="https://www.interbooks.com.au/aboutus">About</a>
+        <a href="https://www.interbooks.com.au/cart">Cart</a>
+      </nav>
+    </details>
   </div>
 </header>
 
@@ -82,35 +116,28 @@ footer.site .legal { grid-column: 1 / -1; border-top: 1px solid rgba(207,201,217
   </div>
 </main>
 
-<footer class="site gutter">
-  <div class="inner">
-    <p class="tag">Books for the curious, the seeking &amp; the quietly strange.</p>
+<footer class="ibx-foot">
+  <div class="ibx-in">
+    <p>Books on the hidden &amp; the inner life. An independent Sydney bookshop: mostly second-hand, some rare, a few new.</p>
     <div>
-      <h4>Shop</h4>
-      <ul>
-        <li><a href="https://www.interbooks.com.au/store">All books</a></li>
-        <li><a href="https://www.interbooks.com.au/occult-esoteric">Occult &amp; Esoteric</a></li>
-        <li><a href="https://www.interbooks.com.au/eastern-philosophy">Eastern Philosophy</a></li>
-        <li><a href="https://www.interbooks.com.au/psychology-consciousness">Psychology &amp; Consciousness</a></li>
-      </ul>
+      <a href="https://www.interbooks.com.au/the-shelves">All books</a>
+      <a href="https://reading-list.interbooks.com.au/">Your reading list</a>
+      <a data-ib-biblio hidden href="#">Bibliomancy</a>
+      <a href="https://www.interbooks.com.au/shipping-returns">Shipping &amp; returns</a>
+      <a href="https://www.interbooks.com.au/find-a-book">Find a book for me</a>
+      <a href="https://www.interbooks.com.au/contact">Contact</a>
+      <a href="https://www.instagram.com/interbooksau">Instagram</a>
     </div>
-    <div>
-      <h4>Inter Books</h4>
-      <ul>
-        <li><a href="https://www.interbooks.com.au/aboutus">About us</a></li>
-        <li><a href="https://www.interbooks.com.au/shipping-returns">Shipping &amp; returns</a></li>
-        <li><a href="https://www.interbooks.com.au/contact">Contact us</a></li>
-        <li><a href="http://instagram.com/interbooksau">Instagram</a></li>
-      </ul>
-    </div>
-    <div class="legal">Inter Books &middot; Second-hand and rare books, posted from Australia</div>
   </div>
+  <div class="ibx-in ibx-base"><span>Est. 2019 · © 2026 Inter Books · Sydney</span></div>
 </footer>
 
 <script>
 window.IB_ORACLE_CONFIG = {
   // The published CSV link of the Books tab in the Google Sheet. Edit the sheet, not this file.
-  sheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRP7459qt84ZVC0fi27tjDLq6nbY-U3QzUO31PisYw-hOuKmrryADv-_5ZkyUkoaIw5RckEF9uhOYLP/pub?gid=864063501&single=true&output=csv"
+  sheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRP7459qt84ZVC0fi27tjDLq6nbY-U3QzUO31PisYw-hOuKmrryADv-_5ZkyUkoaIw5RckEF9uhOYLP/pub?gid=864063501&single=true&output=csv",
+  // When bibliomancy goes live, put its address between the quotes. Every "Try bibliomancy" link then appears.
+  bibliomancyUrl: ""
 };
 </script>
 <script src="oracle.js" defer></script>
